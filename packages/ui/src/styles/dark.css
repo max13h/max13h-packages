@@ -1,0 +1,44 @@
+@import "vars.css";
+
+:root {
+  color-scheme: light dark;
+}
+
+html,
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.light {
+  /* forces light color-scheme */
+  color-scheme: light;
+}
+.dark {
+  /* forces dark color-scheme */
+  color-scheme: dark;
+}
+
+.astro-code,
+.astro-code span {
+  color: light-dark(var(--shiki-light), var(--shiki-dark));
+  background-color: light-dark(white, black);
+  font-style: light-dark(
+    var(--shiki-light-font-style),
+    var(--shiki-dark-font-style)
+  );
+  font-weight: light-dark(
+    var(--shiki-light-font-weight),
+    var(--shiki-dark-font-weight)
+  );
+  text-decoration: light-dark(
+    var(--shiki-light-text-decoration),
+    var(--shiki-dark-text-decoration)
+  );
+}
+
+.astro-code {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid light-dark(var(--color-dark), var(--color-light));
+}

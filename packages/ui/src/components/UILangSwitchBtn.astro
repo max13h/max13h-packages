@@ -1,0 +1,54 @@
+---
+import { Icon } from "astro-icon/components"
+import { getLocaleFromUrl } from "@max13h/i18n"
+
+interface Props {
+  switchPath?: string
+}
+
+const { switchPath: switchPathProp } = Astro.props
+
+const locale = getLocaleFromUrl(Astro.url)
+const otherLocale = locale === "en" ? "fr" : "en"
+
+const labelByLocale = {
+  en: "Switch language",
+  fr: "Changer de langue",
+} as const
+const label = labelByLocale[locale] ?? labelByLocale.fr
+
+const switchPath =
+  switchPathProp ??
+  Astro.url.pathname.replace(`/${locale}/`, `/${otherLocale}/`)
+---
+
+<a
+  href={switchPath}
+  data-locale={otherLocale}
+  id="lang-switch"
+  aria-label={label}
+  title={label}
+>
+  <Icon name={locale} title={label} />
+</a>
+
+<script is:inline>
+  const switcher = document.getElementById("lang-switch")
+  switcher?.addEventListener("click", (event) => {
+    const target = event.currentTarget
+    if (target instanceof HTMLElement) {
+      localStorage.setItem("locale", target.dataset.locale ?? "")
+    }
+  })
+</script>
+
+<style>
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    filter: brightness(0.9);
+  }
+</style>

@@ -1,0 +1,25 @@
+{
+  "name": "@max13h/ui",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./assets/icons/*": "./src/assets/icons/*",
+    "./assets/fonts/*": "./src/assets/fonts/*",
+    "./assets/favicon.svg": "./src/assets/favicon.svg",
+    "./assets/*": "./src/assets/*",
+    "./components/*": "./src/components/*",
+    "./layouts/*": "./src/layouts/*",
+    "./styles/*": "./src/styles/*",
+    "./utils": "./src/utils.ts"
+  },
+  "dependencies": {
+    "@max13h/i18n": "workspace:*",
+    "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "@max13h/tooling": "workspace:*"
+  },
+  "peerDependencies": {
+    "astro": ">=5"
+  }
+}

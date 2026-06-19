@@ -1,0 +1,20 @@
+<main>
+  <slot />
+</main>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3rem;
+    width: clamp(256px, 100vw, 900px);
+    padding: 6rem 0 6rem 0;
+  }
+
+  @media (max-width: 1280px) {
+    main {
+      padding: 2rem 1rem 6rem 1rem;
+    }
+  }
+</style>

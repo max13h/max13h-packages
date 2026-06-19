@@ -1,0 +1,70 @@
+---
+import "../styles/index.css"
+import UINavbar from "../components/UINavbar.js"
+import { getLocaleFromUrl } from "@max13h/i18n"
+import type { RelatedLink } from "../types"
+
+interface Props {
+  title: string
+  showNavbar?: boolean
+  center?: boolean
+  relatedLinks?: RelatedLink[]
+  faviconUrl: string
+  switchPath?: string
+  siteLabel?: string
+  siteHref?: string
+}
+
+const {
+  title,
+  showNavbar = true,
+  center = false,
+  relatedLinks,
+  faviconUrl,
+  switchPath,
+  siteLabel,
+  siteHref,
+} = Astro.props
+const locale = getLocaleFromUrl(Astro.url)
+---
+
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href={faviconUrl} />
+    <!-- Tells search engines and tools which version of Astro was used to generate this site -->
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline define:vars={{ locale }}>
+      localStorage.setItem("locale", locale)
+    </script>
+  </head>
+  <body class:list={[center && "center"]}>
+    {
+      showNavbar && (
+        <UINavbar
+          relatedLinks={relatedLinks}
+          switchPath={switchPath}
+          siteLabel={siteLabel}
+          siteHref={siteHref}
+        />
+      )
+    }
+    <slot />
+  </body>
+</html>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+  }
+
+  :global(.center) {
+    justify-content: center;
+    height: 100%;
+  }
+</style>
