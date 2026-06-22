@@ -1,18 +1,18 @@
-import js from "@eslint/js"
-import astro from "eslint-plugin-astro"
-import vue from "eslint-plugin-vue"
-import md from "eslint-plugin-md"
-import tsPlugin from "@typescript-eslint/eslint-plugin"
-import tsParser from "@typescript-eslint/parser"
-import { FlatCompat } from "@eslint/eslintrc"
-import path from "node:path"
-import { fileURLToPath } from "node:url"
+import js from "@eslint/js";
+import astro from "eslint-plugin-astro";
+import vue from "eslint-plugin-vue";
+import md from "eslint-plugin-md";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
+import { FlatCompat } from "@eslint/eslintrc";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-})
+});
 
 /** @type {import('packages/tooling/eslint.mjs').Linter.Config[]} */
 export default [
@@ -81,4 +81,4 @@ export default [
       quotes: ["error", "double"],
     },
   },
-]
+];
