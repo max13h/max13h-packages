@@ -53,20 +53,48 @@ validate_all() {
   done
 }
 
-release_package() {
-  local package=$1 bump=$2
-  echo "→ releasing @max13h/$package ($bump)"
-  pnpm --filter "@max13h/$package" exec npm version "$bump" --no-git-tag-version
-  pnpm --filter "@max13h/$package" run build
-  pnpm --filter "@max13h/$package" publish --access public
-}
-
-release_all() {
+bump_all() {
   local args=("$@")
   local i=0
   while [ $i -lt ${#args[@]} ]; do
-    release_package "${args[$i]}" "${args[$((i+1))]}"
+    local package=${args[$i]} bump=${args[$((i+1))]}
     i=$((i+2))
+    echo "→ bumping @max13h/$package ($bump)"
+    pnpm --filter "@max13h/$package" exec pnpm version "$bump" --no-git-tag-version --no-git-checks
+  done
+}
+
+commit_versions() {
+  local args=("$@")
+  local msg="chore: release"
+  local i=0
+  while [ $i -lt ${#args[@]} ]; do
+    msg="$msg @max13h/${args[$i]}@${args[$((i+1))]}"
+    i=$((i+2))
+  done
+  git add packages/*/package.json
+  git commit -m "$msg"
+}
+
+build_all() {
+  local args=("$@")
+  local i=0
+  while [ $i -lt ${#args[@]} ]; do
+    local package=${args[$i]}
+    i=$((i+2))
+    echo "→ building @max13h/$package"
+    pnpm --filter "@max13h/$package" run build
+  done
+}
+
+publish_all() {
+  local args=("$@")
+  local i=0
+  while [ $i -lt ${#args[@]} ]; do
+    local package=${args[$i]}
+    i=$((i+2))
+    echo "→ publishing @max13h/$package"
+    pnpm --filter "@max13h/$package" publish --access public
   done
 }
 
@@ -77,7 +105,10 @@ main() {
   fi
 
   validate_all "$@"
-  release_all "$@"
+  bump_all "$@"
+  commit_versions "$@"
+  build_all "$@"
+  publish_all "$@"
 }
 
 main "$@"
