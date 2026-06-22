@@ -1,1 +1,1 @@
-export { default } from "@max13h/tooling/eslint"
+export { default } from "@max13h/tooling/eslint";

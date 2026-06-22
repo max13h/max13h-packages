@@ -5,9 +5,12 @@
   "exports": {
     "./eslint": "./eslint.mjs",
     "./prettier": "./prettier.mjs",
-    "./tsconfig/astro.json": "./tsconfig/astro.json"
+    "./tsconfig/astro.json": "./tsconfig/astro.json",
+    "./tsconfig/lib.json": "./tsconfig/lib.json",
+    "./tsup": "./tsup.ts"
   },
   "devDependencies": {
+    "tsup": "^8.0.0",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^8.59.3",
