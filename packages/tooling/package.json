@@ -9,6 +9,9 @@
     "./tsconfig/lib.json": "./tsconfig/lib.json",
     "./tsup": "./tsup.ts"
   },
+  "scripts": {
+    "build": "true"
+  },
   "devDependencies": {
     "tsup": "^8.0.0",
     "@eslint/eslintrc": "^3.3.5",

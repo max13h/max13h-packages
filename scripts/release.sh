@@ -57,6 +57,7 @@ release_package() {
   local package=$1 bump=$2
   echo "→ releasing @max13h/$package ($bump)"
   pnpm --filter "@max13h/$package" exec npm version "$bump" --no-git-tag-version
+  pnpm --filter "@max13h/$package" run build
   pnpm --filter "@max13h/$package" publish --access public
 }
 
