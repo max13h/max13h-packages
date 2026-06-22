@@ -12,6 +12,6 @@
     "build": "tsup"
   },
   "devDependencies": {
-    "tsup": "^8.0.0"
+    "tsup": "^8.5.1"
   }
 }

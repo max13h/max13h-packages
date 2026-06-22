@@ -15,16 +15,16 @@
   "dependencies": {
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.59.3",
-    "@typescript-eslint/parser": "^8.59.3",
+    "@typescript-eslint/eslint-plugin": "^8.61.1",
+    "@typescript-eslint/parser": "^8.61.1",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-md": "^1.0.19",
-    "eslint-plugin-vue": "^10.9.1",
+    "eslint-plugin-vue": "^10.9.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-vue": "^1.1.6"
   },
   "devDependencies": {
-    "tsup": "^8.0.0"
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
     "astro": ">=5",
