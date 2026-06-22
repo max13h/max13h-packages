@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "lint": "eslint packages/",
-    "format": "prettier --write packages/ *.json *.yaml *.mjs"
+    "format": "prettier --write packages/ *.json *.yaml *.mjs",
     "build": "pnpm -r build",
+    "release": "bash scripts/release.sh"
   },
   "devDependencies": {
     "@max13h/tooling": "workspace:*",
