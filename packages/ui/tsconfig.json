@@ -1,3 +1,6 @@
 {
-  "extends": "@max13h/tooling/tsconfig/astro.json"
+  "extends": "@max13h/tooling/tsconfig/astro.json",
+  "compilerOptions": {
+    "types": ["node"]
+  }
 }

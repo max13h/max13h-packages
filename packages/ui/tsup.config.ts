@@ -3,7 +3,7 @@ import { baseConfig } from "@max13h/tooling/tsup";
 
 export default defineConfig({
   ...baseConfig,
-  entry: ["src/utils.ts"],
+  entry: ["src/utils.ts", "src/icons.ts"],
   dts: true,
   external: ["@max13h/i18n"],
 });
